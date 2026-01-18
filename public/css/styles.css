@@ -23,10 +23,23 @@ body {
   padding: 0.75rem;
 }
 
-.site-header h1 {
+.site-branding h1 {
   margin: 0 0 0.5rem 0;
   font-size: clamp(0.8rem, 8vw, 1.8rem);
   text-align: center;
+}
+
+.site-branding {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.site-logo {
+  width: clamp(1.6rem, 10vw, 3rem);
+  height: auto;
+  object-fit: contain;
 }
 
 nav {
@@ -55,6 +68,11 @@ nav a:hover {
   transform: translateY(-0.1rem);
   box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.35);
   color: #fff;
+}
+
+.trademark {
+    vertical-align: super;
+    font-size: 0.6em; /* Ajusta el tamaño para que se vea más estético */
 }
                   
 /* =========================
@@ -261,6 +279,16 @@ nav a:hover {
   box-shadow: 0 0.5rem 1.2rem rgba(0,0,0,0.08);
 }
 
+.services-logo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 0.5rem 1.2rem rgba(0,0,0,0.08);
+}
+
 /* Autor y libro */
 .portfolio-author,
 .portfolio-book {
@@ -322,6 +350,11 @@ nav a:hover {
   .footer-whatsapp {
     grid-column: 3;
     justify-self: end;
+  }
+  .site-branding {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.6rem;
   }
 }
 
