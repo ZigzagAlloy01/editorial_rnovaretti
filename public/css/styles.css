@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #f7f7f7;
+  color: #222;
+}
+
+.site-header {
+  background: #111;
+  color: #fff;
+  padding: 20px;
+}
+
+.site-header h1 {
+  margin: 0;
+}
+
+nav a {
+  color: #fff;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.container {
+  padding: 40px;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: #eaeaea;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #111;
+  color: white;
+  text-decoration: none;
+}
+
+.services article {
+  margin-bottom: 25px;
+}
+
+.portfolio, .contact {
+  list-style: none;
+  padding: 0;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  background: #ddd;
+  margin-top: 40px;
+}
