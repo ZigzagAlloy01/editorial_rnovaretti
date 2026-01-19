@@ -21,9 +21,19 @@ body {
    HEADER
 ========================= */
 .site-header {
-  background: linear-gradient(135deg, #4a2c1d, #6b3f2a);
+  position: relative;
   color: #fff;
-  padding: 0.75rem;
+  padding: 0.9rem 0.75rem;
+  background-image:
+    linear-gradient(
+      rgba(71, 44, 33, 0.75),
+      rgba(40, 22, 14, 0.75)
+    ),
+    url("https://live.staticflickr.com/65535/55049160632_8ca3649eeb_h.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .site-branding h1 {
@@ -357,8 +367,9 @@ nav a:hover {
   }
   .site-branding {
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 0.6rem;
+    margin: 1rem;
   }
 }
 
