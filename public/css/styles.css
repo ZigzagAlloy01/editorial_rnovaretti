@@ -1,3 +1,30 @@
+:root {
+  /* Colores */
+  --bg-main: #faf7f2;
+  --bg-card: #ffffff;
+  --bg-footer: #ede6dc;
+
+  --brown-dark: #4a2c1d;
+  --brown-mid: #6b3f2a;
+  --brown-light: #8a5236;
+
+  --accent: #b85c38;
+  --accent-hover: #d9a441;
+
+  --text-main: #2b2b2b;
+
+  /* Radios */
+  --radius-sm: 0.4rem;
+  --radius-md: 0.6rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 2rem;
+
+  /* Sombras */
+  --shadow-soft: 0 0.3rem 0.8rem rgba(0,0,0,0.08);
+  --shadow-medium: 0 0.4rem 1rem rgba(0,0,0,0.08);
+  --shadow-strong: 0 0.5rem 1.2rem rgba(0,0,0,0.08);
+}
+
 /* =========================
    BASE — EXTREMO MOBILE FIRST
 ========================= */
@@ -184,6 +211,66 @@ nav a:hover {
 }
 
 /* =========================
+   TESTIMONIOS EN MOVIMIENTO
+========================= */
+
+.testimonials {
+  margin: 3rem 0;
+  text-align: center;
+  overflow: hidden;
+  background: #faf7f2;
+  padding: 1.5rem 0;
+}
+
+.testimonials h2 {
+  font-size: clamp(0.9rem, 6vw, 1.6rem);
+  margin-bottom: 1.5rem;
+  color: #4a2c1d;
+}
+
+.testimonial-marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* Pista animada */
+.testimonial-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: scroll-testimonials 40s linear infinite;
+}
+
+/* Pausa al pasar el mouse */
+.testimonial-marquee:hover .testimonial-track {
+  animation-play-state: paused;
+}
+
+.testimonial-card {
+  min-width: 16rem;
+  max-width: 18rem;
+  background: #fff;
+  padding: 1.1rem 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.08);
+  text-align: left;
+}
+
+.testimonial-card p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0 0 0.75rem 0;
+  color: #2b2b2b;
+}
+
+.testimonial-card span {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #6b3f2a;
+}
+
+/* =========================
    FOOTER
 ========================= */
 .site-footer {
@@ -348,9 +435,19 @@ nav a:hover {
   color: #6b3f2a;
 }
 
+@keyframes scroll-testimonials {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* =========================
-   DESKTOP
+   Media queries
 ========================= */
+
 @media (min-width: 48rem) {
   nav {
     flex-direction: row;
@@ -381,5 +478,10 @@ nav a:hover {
   .portfolio-media {
     height: 14rem;
     max-width: 100%;
+  }
+
+  .testimonial-card {
+    min-width: 12rem;
+    font-size: 0.75rem;
   }
 }
