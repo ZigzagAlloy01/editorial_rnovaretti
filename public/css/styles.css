@@ -1,25 +1,17 @@
 :root {
-  /* Colores */
   --bg-main: #faf7f2;
   --bg-card: #ffffff;
   --bg-footer: #ede6dc;
-
   --brown-dark: #4a2c1d;
   --brown-mid: #6b3f2a;
   --brown-light: #8a5236;
-
   --accent: #b85c38;
   --accent-hover: #d9a441;
-
   --text-main: #2b2b2b;
-
-  /* Radios */
   --radius-sm: 0.4rem;
   --radius-md: 0.6rem;
   --radius-lg: 0.75rem;
   --radius-xl: 2rem;
-
-  /* Sombras */
   --shadow-soft: 0 0.3rem 0.8rem rgba(0,0,0,0.08);
   --shadow-medium: 0 0.4rem 1rem rgba(0,0,0,0.08);
   --shadow-strong: 0 0.5rem 1.2rem rgba(0,0,0,0.08);
@@ -233,7 +225,8 @@ nav a:hover {
 
 
 .testimonial-marquee {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   position: relative;
   width: 100%;
 }
@@ -244,6 +237,7 @@ nav a:hover {
   gap: 1.25rem;
   width: max-content;
   flex-wrap: nowrap; 
+  align-items: flex-start;
   animation: scroll-testimonials 40s linear infinite;
 }
 
@@ -252,20 +246,16 @@ nav a:hover {
   animation-play-state: paused;
 }
 
-.testimonial-set {
-  display: flex;
-  gap: 1.25rem;
-}
-
 .testimonial-card {
+  flex: 0 0 auto; 
   min-width: 16rem;
   max-width: 18rem;
+  height: auto;
   background: #fff;
   padding: 1.1rem 1.25rem;
   border-radius: 0.75rem;
   box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.08);
   text-align: left;
-  flex: 0 0 auto; 
 }
 
 .testimonial-card p {
@@ -273,12 +263,15 @@ nav a:hover {
   line-height: 1.6;
   margin: 0 0 0.75rem 0;
   color: #2b2b2b;
+  white-space: normal;
+  overflow: visible;
+
 }
 
 .testimonial-card span {
   font-size: 0.75rem;
   font-style: italic;
-  color: #6b3f2a;
+  color: var(--brown-mid);
 }
 
 /* =========================
@@ -443,7 +436,7 @@ nav a:hover {
 .portfolio-book p {
   margin: 0;
   font-size: clamp(0.5rem, 5vw, 0.85rem);
-  color: #6b3f2a;
+  color: var(--brown-mid);
 }
 
 @keyframes scroll-testimonials {
