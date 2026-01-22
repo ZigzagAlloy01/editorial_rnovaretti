@@ -212,7 +212,8 @@ nav a:hover {
 .testimonials {
   margin: 3rem 0;
   text-align: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   background: var(--bg-main);
   padding: 1.5rem 0;
 }
