@@ -40,7 +40,7 @@
   <h2>Lo que dicen nuestros autores</h2>
 
   <div class="testimonial-marquee">
-    <div class="testimonial-track">
+    <div class="testimonial-track" id="testimonialTrack">
 
       <article class="testimonial-card">
         <p>“Estoy muy agradecido con el servicio brindado por esta editorial. La calidad y atención brindada desde la cotización hasta la entrega de mis libros ha sido magnifica.”</p>
@@ -55,12 +55,18 @@
       <article class="testimonial-card">
         <p>“Editorial R Novaretti. Gran Editorial, muy responsables y son de grandísima ayuda.”</p>
         <span>— Jesús Arturo Gardea</span>
-      </article>
-
-      
-      </article>
+      </article>      
     </div>
   </div>
 </section>
 
 <%- include('partials/footer') %>
+
+<script>
+  const track = document.getElementById("testimonialTrack");
+  if (track) {
+    const clone = track.cloneNode(true);
+    clone.removeAttribute("id");
+    track.parentNode.appendChild(clone);
+  }
+</script>
