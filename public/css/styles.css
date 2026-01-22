@@ -229,6 +229,8 @@ nav a:hover {
   overflow-y: visible;
   position: relative;
   width: 100%;
+  display: block;
+  min-height: max-content;
 }
 
 /* Pista animada */
@@ -238,6 +240,8 @@ nav a:hover {
   width: max-content;
   flex-wrap: nowrap; 
   align-items: flex-start;
+  align-content: flex-start;
+  will-change: transform;
   animation: scroll-testimonials 40s linear infinite;
 }
 
@@ -265,7 +269,6 @@ nav a:hover {
   color: #2b2b2b;
   white-space: normal;
   overflow: visible;
-
 }
 
 .testimonial-card span {
