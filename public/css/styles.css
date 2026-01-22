@@ -243,12 +243,18 @@ nav a:hover {
   display: flex;
   gap: 1.25rem;
   width: max-content;
+  flex-wrap: nowrap; 
   animation: scroll-testimonials 40s linear infinite;
 }
 
 /* Pausa al pasar el mouse */
 .testimonial-marquee:hover .testimonial-track {
   animation-play-state: paused;
+}
+
+.testimonial-set {
+  display: flex;
+  gap: 1.25rem;
 }
 
 .testimonial-card {
@@ -259,6 +265,7 @@ nav a:hover {
   border-radius: 0.75rem;
   box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.08);
   text-align: left;
+  flex: 0 0 auto; 
 }
 
 .testimonial-card p {

@@ -41,32 +41,33 @@
 
   <div class="testimonial-marquee">
     <div class="testimonial-track" id="testimonialTrack">
+        <div class="testimonial-set">
+          <article class="testimonial-card">
+            <p>“Estoy muy agradecido con el servicio brindado…”</p>
+            <span>— Magdaleno A. Zamora</span>
+          </article>
 
-      <article class="testimonial-card">
-        <p>“Estoy muy agradecido con el servicio brindado por esta editorial. La calidad y atención brindada desde la cotización hasta la entrega de mis libros ha sido magnifica.”</p>
-        <span>— Magdaleno A. Zamora</span>
-      </article>
+          <article class="testimonial-card">
+            <p>“Profesionalismo, cuidado estético y una comunicación constante…”</p>
+            <span>— Autora independiente</span>
+          </article>
 
-      <article class="testimonial-card">
-        <p>“Profesionalismo, cuidado estético y una comunicación constante durante todo el proceso.”</p>
-        <span>— Autora independiente</span>
-      </article>
-
-      <article class="testimonial-card">
-        <p>“Editorial R Novaretti. Gran Editorial, muy responsables y son de grandísima ayuda.”</p>
-        <span>— Jesús Arturo Gardea</span>
-      </article>      
-    </div>
-  </div>
-</section>
+          <article class="testimonial-card">
+            <p>“Editorial R Novaretti. Gran Editorial…”</p>
+            <span>— Jesús Arturo Gardea</span>
+          </article>
+        </div>
+        </div>
+      </div>
+    </section>
 
 <%- include('partials/footer') %>
 
 <script>
   const track = document.getElementById("testimonialTrack");
   if (track) {
-    const clone = track.cloneNode(true);
-    clone.removeAttribute("id");
-    track.parentNode.appendChild(clone);
+    const set = track.querySelector(".testimonial-set");
+    const clone = set.cloneNode(true);
+    track.appendChild(clone);
   }
 </script>
