@@ -8,6 +8,7 @@ import MongoStore from "connect-mongo";
 import adminRoutes from "../routes/admin.js";
 
 const app = express();
+app.set("trust proxy", 1);
 
 // Fix __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -22,17 +23,19 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  resave: false,
+  resave: true, 
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI
+    mongoUrl: process.env.MONGODB_URI,
+    collectionName: 'sessions'
   }),
   cookie: { 
-    secure: process.env.NODE_ENV === "production",
-    httpOnly: true,
+    secure: true, 
+    sameSite: 'lax', 
     maxAge: 1000 * 60 * 60
   }
 }));
+
 // Routes
 app.get("/", (req, res) => {
   res.render("index");
