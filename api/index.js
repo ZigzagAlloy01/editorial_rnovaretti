@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import session from "express-session";
 import portfolio from "../models/portfolio.js"
 import connectDB from "../lib/db.js";
+import MongoStore from "connect-mongo";
 import adminRoutes from "../routes/admin.js";
 
 const app = express();
@@ -23,9 +24,13 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI
+  }),
   cookie: { 
     secure: process.env.NODE_ENV === "production",
-    httpOnly: true 
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60
   }
 }));
 // Routes
