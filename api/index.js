@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import portfolio from "../models/portfolio.js"
+import connectDB from "../lib/db.js";
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.get("/quienes-somos", (req, res) => {
 
 app.get("/portafolio", async (req, res) => {
   try {
+    await connectDB();
     const trabajos = await portfolio.find().lean();
     res.render("portfolio", { trabajos });
   } catch (err) {
