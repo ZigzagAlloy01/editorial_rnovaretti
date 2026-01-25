@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import portfolio from "../models/portfolio.js"
 
 const app = express();
 
@@ -29,8 +30,14 @@ app.get("/quienes-somos", (req, res) => {
   res.render("about");
 });
 
-app.get("/portafolio", (req, res) => {
-  res.render("portfolio");
+app.get("/portafolio", async (req, res) => {
+  try {
+    const trabajos = await portfolio.find().lean();
+    res.render("portfolio", { trabajos });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error cargando portafolio");
+  }
 });
 
 app.get("/contacto", (req, res) => {
