@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<h2>Agregar trabajo al portafolio</h2>
+
+<form method="POST" action="/admin/portfolio">
+  <input name="authorName" placeholder="Autor" required>
+  <input name="authorImage" placeholder="Imagen autor (URL)" required>
+
+  <input name="bookTitle" placeholder="Libro" required>
+  <input name="bookImage" placeholder="Imagen libro (URL)" required>
+  <input name="genre" placeholder="Género" required>
+
+  <button type="submit">Guardar</button>
+</form>
+
+<% if (errors) { %>
+  <ul class="form-errors">
+    <% errors.forEach(e => { %>
+      <li><%= e.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<hr>
+
+<h2>Trabajos existentes</h2>
+
+<% trabajos.forEach(item => { %>
+  <article class="portfolio-item">
+
+    <strong><%= item.author.name %></strong><br>
+    <em><%= item.book.title %></em><br>
+
+    <form method="POST" action="/admin/portfolio/<%= item._id %>/delete" style="display:inline;">
+      <button type="submit">Eliminar</button>
+    </form>
+
+    <a href="/admin/portfolio/<%= item._id %>/edit">Editar</a>
+
+  </article>
+<% }) %>
+
+<%- include('partials/footer') %>

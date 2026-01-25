@@ -4,130 +4,27 @@
 
 <section class="portfolio-grid">
 
-  <article class="portfolio-item">  
-    <div class="portfolio-author">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55055541203_0fed7cd1e9_c.jpg" alt="Magdaleno Aguilar Zamora">
-      </div>
-      <h3>Magdaleno Aguilar Zamora</h3>
-      <p>Autor</p>
-    </div>
+  <% trabajos.forEach(item => { %>
+    <article class="portfolio-item">  
 
-    <div class="portfolio-book">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047420893_5f37a8a18c_h.jpg" alt="El Colega">
+      <div class="portfolio-author">
+        <div class="portfolio-media">
+          <img src="<%= item.author.image %>" alt="<%= item.author.name %>">
+        </div>
+        <h3><%= item.author.name %></h3>
+        <p><%= item.author.role %></p>
       </div>
-      <h3>El Colega</h3>
-      <p>Libro</p>
-    </div>
-  </article>
-  <article class="portfolio-item">  
-    <div class="portfolio-author">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047420883_c405456659_z.jpg" alt="Sociedad de Escritores de Ciudad Juárez">
-      </div>
-      <h3>Sociedad de Escritores de Ciudad Juárez</h3>
-      <p>Autor</p>
-    </div>
 
-    <div class="portfolio-book">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047420873_5f26ebd212_h.jpg" alt="Tras las Huellas de la Historia Chihuahuense - Antología 2024">
+      <div class="portfolio-book">
+        <div class="portfolio-media">
+          <img src="<%= item.book.image %>" alt="<%= item.book.title %>">
+        </div>
+        <h3><%= item.book.title %></h3>
+        <p><%= "Género: " + item.book.genre %></p>
       </div>
-      <h3>Tras las Huellas de la Historia Chihuahuense - Antología 2024</h3>
-      <p>Libro</p>
-    </div>
-  </article>
-  <article class="portfolio-item">  
-    <div class="portfolio-author">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047497704_0ef7d8bcc2_h.jpg" alt="Cecy Leyva">
-      </div>
-      <h3>Cecy Leyva</h3>
-      <p>Autor</p>
-    </div>
 
-    <div class="portfolio-book">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047575965_4535629c43_h.jpg" alt="La Canción Ranchera">
-      </div>
-      <h3>La Canción Ranchera</h3>
-      <p>Libro</p>
-    </div>
-  </article>
-  <article class="portfolio-item">  
-    <div class="portfolio-author">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047619472_f83188a4e4_b.jpg" alt="Jesús Arturo Gardea">
-      </div>
-      <h3>Jesús Arturo Gardea</h3>
-      <p>Autor</p>
-      <p>"Editorial R Novaretti. Gran Editorial, muy responsables y son de grandísima ayuda".</p>
-      <p>-Jesús Arturo Gardea</p>            
-    </div>
-
-    <div class="portfolio-book">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55046338667_ca3aee83b7_n.jpg" alt="Santi">
-      </div>
-      <h3>Santi</h3>
-      <p>Libro</p>
-    </div>
-  </article>
-  <article class="portfolio-item">  
-    <div class="portfolio-author">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047531069_f0a69d7c7a_b.jpg" alt="Raúl E. Ruiz Hernández">
-      </div>
-      <h3>Raúl E. Ruiz Hernández</h3>
-      <p>Autor</p>
-    </div>
-
-    <div class="portfolio-book">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55046338947_e43c22e177_b.jpg" alt="El Renacimiento de Tenochtitlán - Los Guerreros del Quinto Sol">
-      </div>
-      <h3>El Renacimiento de Tenochtitlán - Los Guerreros del Quinto Sol</h3>
-      <p>Libro</p>
-    </div>
-  </article>
-  <article class="portfolio-item">  
-    <div class="portfolio-author">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047608325_4d5134c9e8_b.jpg" alt="Raúl E. Ruiz Hernández">
-      </div>
-      <h3>Raúl E. Ruiz Hernández</h3>
-      <p>Autor</p>
-    </div>
-
-    <div class="portfolio-book">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047421213_e8b141efb6_b.jpg" alt="Casetta">
-      </div>
-      <h3>Casetta</h3>
-      <p>Libro</p>
-    </div>
-  </article>
-  <article class="portfolio-item">  
-    <div class="portfolio-author">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047575960_af5bb6219e_m.jpg" alt="Raúl E. Ruiz Hernández">
-      </div>
-      <h3>Raúl E. Ruiz Hernández</h3>
-      <p>Autor</p>
-    </div>
-
-    <div class="portfolio-book">
-      <div class="portfolio-media">
-        <img src="https://live.staticflickr.com/65535/55047234691_455b42d845_b.jpg" alt="Noble Blood">
-      </div>
-      <h3>Noble Blood</h3>
-      <p>Saga de libros</p>
-    </div>
-  </article>
+    </article>
+  <% }) %>
 </section>
-</section>
-
-
 
 <%- include('partials/footer') %>

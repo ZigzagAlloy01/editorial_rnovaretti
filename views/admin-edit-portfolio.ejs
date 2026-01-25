@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<h2>Editar portafolio</h2>
+
+<% if (errors) { %>
+  <ul class="form-errors">
+    <% errors.forEach(e => { %>
+      <li><%= e.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<form method="POST" action="/admin/portfolio/<%= item._id %>/update">
+
+  <input name="authorName" value="<%= item.author.name %>" required>
+  <input name="authorImage" value="<%= item.author.image %>" required>
+
+  <input name="bookTitle" value="<%= item.book.title %>" required>
+  <input name="bookImage" value="<%= item.book.image %>" required>
+  <input name="genre" value="<%= item.book.genre %>" required>
+
+  <button type="submit">Actualizar</button>
+</form>
+
+<a href="/admin/portfolio">← Volver</a>
+
+<%- include('partials/footer') %>

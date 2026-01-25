@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+
+<h2>Acceso administrador</h2>
+
+<% if (error) { %>
+  <p style="color:red;"><%= error %></p>
+<% } %>
+
+<form method="POST" action="/admin/login">
+  <input
+    type="password"
+    name="password"
+    placeholder="Contraseña"
+    required
+  />
+  <button type="submit">Entrar</button>
+
+  <% if (error) { %>
+    <p style="color:red"><%= error %></p>
+  <% } %>
+</form>
+
+
+<%- include('partials/footer') %>
