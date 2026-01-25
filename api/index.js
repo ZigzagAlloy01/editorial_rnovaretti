@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import portfolio from "../models/portfolio.js"
 import connectDB from "../lib/db.js";
+import adminRoutes from "../routes/admin.js";
 
 const app = express();
 
@@ -45,5 +46,7 @@ app.get("/portafolio", async (req, res) => {
 app.get("/contacto", (req, res) => {
   res.render("contact");
 });
+
+app.use("/admin", adminRoutes);
 
 export default app;
