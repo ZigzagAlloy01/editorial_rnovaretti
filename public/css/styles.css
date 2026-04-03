@@ -281,14 +281,16 @@ nav a:hover {
 /* =========================
    FOOTER
 ========================= */
+
 .site-footer {
-  background: #ede6dc;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.5rem;
-  text-align: center;
-  font-size: clamp(0.45rem, 5vw, 0.85rem);
+    width: 100%;
+    background-color: #ede6dc; 
+    padding: 40px 0;
+    margin-top: auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* =========================
@@ -333,10 +335,23 @@ nav a:hover {
     #d6249f 60%,
     #285aeb 90%
   );
+  margin: 1rem 0;
 }
 
 .whatsapp-toggle.instagram:hover {
   opacity: 0.9;
+}
+
+.whatsapp-toggle.facebook {
+  background: radial-gradient(
+    circle at 30% 110%, 
+    #0064e0 0%, 
+    #0064e0 5%, 
+    #00afef 45%, 
+    #285aeb 60%, 
+    #1877f2 90%
+  );
+  margin: 1rem 0;
 }
 
 
@@ -441,6 +456,173 @@ nav a:hover {
   margin: 0;
   font-size: clamp(0.5rem, 5vw, 0.85rem);
   color: var(--brown-mid);
+}
+
+.site-footer {
+  background-color: #ede6dc; 
+  color: black;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.site-logo {
+  max-width: 150px;
+  height: auto;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #333;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.social-icon.whatsapp:hover { background: #25D366; transform: translateY(-3px); }
+.social-icon.instagram:hover { background: #E1306C; transform: translateY(-3px); }
+.social-icon.facebook:hover { background: #1877F2; transform: translateY(-3px); }
+
+.footer-info {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.contacto-links {
+    list-style: none;
+    padding: 0;
+}
+
+.contacto-links a {
+    text-decoration: none; 
+    color: #4a4a4a; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.contacto-links a:hover {
+    color: #8b0000; 
+}
+
+
+.social-icons-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-icons-container a {
+    text-decoration: none;
+}
+
+.anuncio-destacado-minimal {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 2rem auto;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.imagen-fondo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6); /* Oscurece la imagen para que se lea el texto */
+    transition: transform 0.5s ease;
+}
+
+.anuncio-destacado-minimal:hover .imagen-fondo {
+    transform: scale(1.03);
+}
+
+.superposicion-texto {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    color: white;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.superposicion-texto h2 {
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.superposicion-texto p {
+    margin: 0 0 20px 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.contenedor-botones {
+    display: flex;
+    gap: 15px; 
+    justify-content: flex-start; 
+    margin-top: 3rem;
+  }
+
+.btn-minimal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    border: 2px solid white;
+    font-weight: bold;
+    backdrop-filter: blur(5px); 
+    transition: background 0.3s, transform 0.2s, color 0.3s;
+    font-size: 0.95rem;
+}
+
+.btn-minimal {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    border: 2px solid white;
+    font-weight: bold;
+    backdrop-filter: blur(5px); /* Efecto cristal */
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-minimal:hover {
+    background: rgba(255,255,255,1);
+    color: #333;
+    transform: scale(1.05);
 }
 
 @keyframes scroll-testimonials {

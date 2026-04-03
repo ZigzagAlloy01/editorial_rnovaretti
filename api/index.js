@@ -60,6 +60,10 @@ app.get("/portafolio", async (req, res) => {
   }
 });
 
+app.get("/anuncios", (req, res) => {
+  res.render("news");
+});
+
 app.get("/contacto", (req, res) => {
   res.render("contact");
 });

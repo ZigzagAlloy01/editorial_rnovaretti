@@ -20,6 +20,10 @@ router.get("/portafolio", async (req, res) => {
   res.render("portfolio", { trabajos });
 });
 
+router.get("/anuncios", (req, res) => {
+  res.render("news");
+});
+
 router.get("/contacto", (req, res) => {
   res.render("contact");
 });
