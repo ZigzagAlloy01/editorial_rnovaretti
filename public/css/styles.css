@@ -543,9 +543,10 @@ nav a:hover {
     position: relative;
     width: 100%;
     max-width: 800px;
-    height: 350px;
+    height: auto;
+    min-height: 220px;
     border-radius: 15px;
-    overflow: hidden;
+    
     margin: 2rem auto;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
@@ -564,17 +565,16 @@ nav a:hover {
 
 .superposicion-texto {
     position: absolute;
-    bottom: 30px;
-    left: 30px;
-    right: 30px;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
     color: white;
     text-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .superposicion-texto h2 {
-    margin: 0 0 10px 0;
-    font-size: 2rem;
-    font-weight: 800;
+    font-size: clamp(0.8rem, 5vw, 2rem);
+    line-height: 1.2;
 }
 
 .superposicion-texto p {
@@ -585,9 +585,10 @@ nav a:hover {
 
 .contenedor-botones {
     display: flex;
-    gap: 15px; 
+    flex-wrap: wrap;
+    gap: 0.5rem; 
     justify-content: flex-start; 
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 
 .btn-minimal {
@@ -597,13 +598,14 @@ nav a:hover {
     background: rgba(255,255,255,0.2);
     color: white;
     text-decoration: none;
-    padding: 12px 24px;
+    padding: 0.4rem 0.8rem;
     border-radius: 30px;
     border: 2px solid white;
     font-weight: bold;
     backdrop-filter: blur(5px); 
     transition: background 0.3s, transform 0.2s, color 0.3s;
-    font-size: 0.95rem;
+    font-size: clamp(0.6rem, 4vw, 0.9rem);
+    text-align: center;
 }
 
 .btn-minimal {
@@ -623,6 +625,13 @@ nav a:hover {
     background: rgba(255,255,255,1);
     color: #333;
     transform: scale(1.05);
+}
+
+.anuncio-destacado-minimal,
+.superposicion-texto,
+.contenedor-botones {
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 @keyframes scroll-testimonials {
@@ -698,5 +707,48 @@ nav a:hover {
   .testimonial-card {
     min-width: 12rem;
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 36rem) {
+
+  .anuncio-destacado-minimal {
+    border-radius: 10px;
+  }
+
+  .superposicion-texto {
+    bottom: 0.8rem;
+    left: 0.8rem;
+    right: 0.8rem;
+  }
+
+  .contenedor-botones {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-minimal {
+    width: 100%;
+  }
+
+  .btn-icon {
+    width: auto;
+    align-self: center;
+  }
+}
+
+@media (max-width: 16rem) {
+
+  .superposicion-texto h2 {
+    font-size: 0.7rem;
+  }
+
+  .superposicion-texto p {
+    font-size: 0.55rem;
+  }
+
+  .btn-minimal {
+    font-size: 0.55rem;
+    padding: 0.3rem 0.5rem;
   }
 }
