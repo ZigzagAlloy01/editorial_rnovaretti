@@ -21,6 +21,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  text-align: center;
 }
 
 
@@ -115,9 +116,10 @@ nav a:hover {
 ========================= */
 .container {
   padding: 0.75rem;
-  max-width: 90rem;
+  max-width: 80rem;
   margin: 0 auto;
   flex: 1;
+  text-align: center;
 }
 
 /* =========================
@@ -441,7 +443,7 @@ nav a:hover {
 .portfolio-media img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* nunca se deforma */
+  object-fit: contain;
 }
 
 /* Textos */
@@ -539,6 +541,14 @@ nav a:hover {
     text-decoration: none;
 }
 
+.anuncios-container {
+  padding: 0.75rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  flex: 1;
+  text-align: center;
+}
+
 .anuncios-header {
   margin-bottom: 4rem;
   position: relative;
@@ -547,13 +557,12 @@ nav a:hover {
 
 .anuncio-destacado-minimal {
     position: relative;
+    max-width: 40rem;
     width: 100%;
-    max-width: 800px;
     height: auto;
-    min-height: 220px;
     border-radius: 15px;
-    margin: 3rem auto;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    margin: 4rem auto;
+    overflow: hidden;
 }
 
 .anuncio-destacado-minimal:first-of-type {
@@ -561,11 +570,13 @@ nav a:hover {
 }
 
 .imagen-fondo {
+    max-width: 100%;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
     filter: brightness(0.6);
     transition: transform 0.5s ease;
+    border-radius: 15px;
 }
 
 .anuncio-destacado-minimal:hover .imagen-fondo {
@@ -574,22 +585,27 @@ nav a:hover {
 
 .superposicion-texto {
     position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
+    bottom: 0;
+    width: 100%;
+    left: 0;
     color: white;
+    box-sizing: border-box;
     text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    margin: 0;
+    padding: 2rem;
 }
 
 .superposicion-texto h2 {
     font-size: clamp(0.8rem, 5vw, 2rem);
     line-height: 1.2;
+    max-width: 30rem;
 }
 
 .superposicion-texto p {
     margin: 0 0 20px 0;
     font-size: 1.1rem;
     opacity: 0.9;
+    max-width: 30rem;
 }
 
 .contenedor-botones {
@@ -656,45 +672,6 @@ nav a:hover {
    Media queries
 ========================= */
 
-@media (max-width: 16rem) {
-
-  .superposicion-texto h2 {
-    font-size: 0.7rem;
-  }
-
-  .superposicion-texto p {
-    font-size: 0.55rem;
-  }
-
-  .btn-minimal {
-    font-size: 0.55rem;
-    padding: 0.3rem 0.5rem;
-  }
-}
-
-@media (max-width: 20rem) {
-
-  .anuncio-destacado-minimal {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  .imagen-fondo {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  .superposicion-texto {
-    position: relative;
-    z-index: 1;
-    background: rgba(0,0,0,0.4);
-    padding: 0.6rem;
-    border-radius: 10px;
-  }
-}
-
 @media (max-width: 30rem) {
   .portfolio-item {
     grid-template-columns: 1fr;
@@ -710,38 +687,60 @@ nav a:hover {
     font-size: 0.75rem;
   }
 }
-/*
-@media (max-width: 36rem) {
+
+@media (max-width: 36.1875rem)  {
+
+  .anuncios-header h1 {
+    width: 100%;      
+    max-width: 40rem;        
+    white-space: normal;    
+    word-break: keep-all;   
+    overflow-wrap: break-word; 
+    font-size: clamp(1.5rem, 8vw, 1.5rem); 
+    line-height: 1.2;
+    text-align: center;
+    margin: 0 auto 1rem auto;
+  }
 
   .anuncio-destacado-minimal {
-    border-radius: 10px;
-    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 0 0 0 0;
+    max-width: 100%;
+    margin: 2rem 0;
+  }
+
+  .imagen-fondo {
+    width: 100%;
+    height: auto; 
+    object-fit: cover;
+    border-radius: 10px; 
+    filter: brightness(1);
   }
 
   .superposicion-texto {
-    bottom: 0.8rem;
-    left: 0.8rem;
-    right: 0.8rem;
-    position: absolute;
-    bottom: 0.5rem;
-    background: rgba(0,0,0,0.4);
-  }
-
-  .contenedor-botones {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn-minimal {
+    position: relative; 
+    top: 0;            
+    padding: 1.5rem;   
+    text-align: center;
     width: 100%;
+    bottom: 0rem;
+    left: 0rem;
+    right: 0rem;
+    background: linear-gradient(transparent, rgb(0, 0, 0));
+    border-radius: 15px; 
   }
 
-  .btn-icon {
-    width: auto;
-    align-self: center;
+  .superposicion-texto h2 {
+    font-size: clamp(0.8rem, 5vw, 2rem);
+  }
+
+  .superposicion-texto p {
+    font-size: clamp(0.8rem, 5vw, 1rem);
   }
 }
-*/
+
 @media (min-width: 48rem) {
   nav {
     flex-direction: row;
