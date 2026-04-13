@@ -540,7 +540,7 @@ nav a:hover {
 }
 
 .anuncios-header {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   position: relative;
   z-index: 2;
 }
@@ -564,7 +564,7 @@ nav a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.6); /* Oscurece la imagen para que se lea el texto */
+    filter: brightness(0.6);
     transition: transform 0.5s ease;
 }
 
@@ -710,7 +710,7 @@ nav a:hover {
     font-size: 0.75rem;
   }
 }
-
+/*
 @media (max-width: 36rem) {
 
   .anuncio-destacado-minimal {
@@ -724,6 +724,7 @@ nav a:hover {
     right: 0.8rem;
     position: absolute;
     bottom: 0.5rem;
+    background: rgba(0,0,0,0.4);
   }
 
   .contenedor-botones {
@@ -740,7 +741,7 @@ nav a:hover {
     align-self: center;
   }
 }
-
+*/
 @media (min-width: 48rem) {
   nav {
     flex-direction: row;
