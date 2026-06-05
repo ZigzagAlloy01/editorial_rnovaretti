@@ -6,6 +6,7 @@ import portfolio from "../models/portfolio.js"
 import connectDB from "../lib/db.js";
 import MongoStore from "connect-mongo";
 import adminRoutes from "../routes/admin.js";
+import mercadopago from "../mercadopago.json" with { type: "json" };
 
 const app = express();
 app.set("trust proxy", 1);
@@ -58,6 +59,20 @@ app.get("/portafolio", async (req, res) => {
     console.error(err);
     res.status(500).send("Error cargando portafolio");
   }
+});
+
+app.get("/comprar-ebook/:title", (req, res) => {
+
+  const title = decodeURIComponent(req.params.title);
+
+  const libro = mercadopago[title];
+
+  if (!libro) {
+    return res.status(404).send("No se encontró enlace de pago para este libro.");
+  }
+
+  res.redirect(libro.enlace_pago);
+
 });
 
 app.get("/anuncios", (req, res) => {

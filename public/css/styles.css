@@ -460,6 +460,17 @@ nav a:hover {
   color: var(--brown-mid);
 }
 
+.buy-button {
+    color: #fff;
+    text-decoration: none;
+    font-size: clamp(0.6rem, 6vw, 0.95rem);
+    padding: 0.4rem 0.9rem;
+    background: var(--brown-mid);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 0.15rem 0.35rem rgba(0, 0, 0, 0.25);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
 .site-footer {
   background-color: #ede6dc; 
   color: black;
