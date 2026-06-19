@@ -4,7 +4,7 @@ import {
     Preference
 } from "mercadopago";
 
-export async function createPreference(
+export async function createPaymentPreference(
     order,
     ebook,
     user
