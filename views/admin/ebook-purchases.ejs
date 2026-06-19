@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+Compras de ebooks
+</title>
+
+<style>
+
+body{
+  font-family: Arial;
+  margin:40px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  border:1px solid #ccc;
+  padding:10px;
+  text-align:left;
+}
+
+th{
+  background:#eee;
+}
+
+.paid{
+  color:green;
+  font-weight:bold;
+}
+
+.pending{
+  color:orange;
+  font-weight:bold;
+}
+
+.cancelled{
+  color:red;
+  font-weight:bold;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>
+Compras de ebooks
+</h1>
+
+<p>
+Total de órdenes:
+<%= orders.length %>
+</p>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Cliente</th>
+<th>Email</th>
+<th>Libro</th>
+<th>Precio</th>
+<th>Estado</th>
+<th>Comprado</th>
+<th>Pagado</th>
+<th>Descargas</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<% orders.forEach(order => { %>
+
+<tr>
+
+<td>
+<%= order.users?.name || "-" %>
+</td>
+
+<td>
+<%= order.users?.email || "-" %>
+</td>
+
+<td>
+<%= order.ebooks?.title || "-" %>
+</td>
+
+<td>
+$<%= order.ebooks?.price || 0 %>
+</td>
+
+<td>
+
+<span class="<%= order.status %>">
+
+<%= order.status %>
+
+</span>
+
+</td>
+
+<td>
+
+<%= new Date(
+      order.created_at
+    ).toLocaleString()
+%>
+
+</td>
+
+<td>
+
+<%= order.paid_at
+      ? new Date(
+          order.paid_at
+        ).toLocaleString()
+      : "-"
+%>
+
+</td>
+
+<td>
+<%= order.download_count %>
+</td>
+
+</tr>
+
+<% }) %>
+
+</tbody>
+
+</table>
+
+</body>
+</html>

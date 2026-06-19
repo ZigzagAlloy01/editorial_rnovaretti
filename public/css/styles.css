@@ -670,6 +670,45 @@ nav a:hover {
   overflow-wrap: break-word;
 }
 
+.auth-container {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group input {
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.auth-form button {
+    padding: 12px;
+    cursor: pointer;
+}
+
+.auth-error {
+    margin-bottom: 16px;
+    padding: 12px;
+    border: 1px solid #cc0000;
+    background: #ffe6e6;
+}
+
+.auth-links {
+    margin-top: 20px;
+}
+
 @keyframes scroll-testimonials {
   from {
     transform: translateX(0);

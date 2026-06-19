@@ -24,12 +24,72 @@
   <h1>Editorial R Novaretti <span class="trademark">®</span></h1>
   </div>
   <nav>
+
     <a href="/">Inicio</a>
-    <a href="/servicios">Servicios</a>
-    <a href="/quienes-somos">Quiénes somos</a>
-    <a href="/portafolio">Portafolio</a>
-    <a href="/anuncios" class="nav-item">Anuncios</a>
-    <a href="/contacto">Contacto</a>
+
+    <a href="/servicios">
+      Servicios
+    </a>
+
+    <a href="/quienes-somos">
+      Quiénes somos
+    </a>
+
+    <a href="/portafolio">
+      Portafolio
+    </a>
+
+    <a href="/anuncios">
+      Anuncios
+    </a>
+
+    <a href="/contacto">
+      Contacto
+    </a>
+
+    <% if (!user) { %>
+
+      <a href="/login">
+        Iniciar sesión
+      </a>
+
+      <a href="/register">
+        Crear cuenta
+      </a>
+
+    <% } else { %>
+
+      <a href="/mis-libros">
+        Mi biblioteca
+      </a>
+
+      <span
+        style="
+          margin-left:15px;
+          font-weight:bold;
+        "
+      >
+        Hola, <%= user.name %>
+      </span>
+
+      <a href="/logout">
+        Cerrar sesión
+      </a>
+
+    <% } %>
+
+    <% if (isAdmin) { %>
+
+      <a href="/admin/portfolio">
+        Admin
+      </a>
+
+      <a href="/admin/ebook-purchases">
+        Ventas
+      </a>
+
+    <% } %>
+
   </nav>
 </header>
 

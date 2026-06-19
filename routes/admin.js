@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { body, validationResult } from "express-validator";
 import portfolio from "../models/portfolio.js";
 import isAdmin from "../middleware/isAdmin.js";
+import supabase from "../lib/supabase.js";
 
 const router = express.Router();
 
@@ -131,6 +132,62 @@ router.post(
     });
 
     res.redirect("/admin/portfolio");
+  }
+);
+
+router.get(
+  "/ebook-purchases",
+  isAdmin,
+  async (req, res) => {
+
+    try {
+
+      const { data, error } =
+        await supabase
+          .from("orders")
+          .select(`
+            id,
+            status,
+            paid_at,
+            download_count,
+            created_at,
+            users (
+              name,
+              email
+            ),
+            ebooks (
+              title,
+              price
+            )
+          `)
+          .order(
+            "created_at",
+            { ascending: false }
+          );
+
+      if (error) {
+        throw error;
+      }
+
+      res.render(
+        "admin/ebook-purchases",
+        {
+          orders: data || []
+        }
+      );
+
+    } catch (err) {
+
+      console.error(err);
+
+      res
+        .status(500)
+        .send(
+          "Error cargando compras."
+        );
+
+    }
+
   }
 );
 

@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<h1><%= ebook.title %></h1>
+
+<p>
+    Gracias por tu compra.
+</p>
+
+<p>
+    Tu ebook está disponible para descarga.
+</p>
+
+<a
+    class="buy-button"
+    href="/descargar-ebook/<%= encodeURIComponent(ebook.title) %>"
+>
+    Descargar ebook
+</a>
+
+<%- include('../partials/footer') %>

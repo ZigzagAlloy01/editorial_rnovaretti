@@ -6,7 +6,25 @@ import portfolio from "../models/portfolio.js"
 import connectDB from "../lib/db.js";
 import MongoStore from "connect-mongo";
 import adminRoutes from "../routes/admin.js";
-import mercadopago from "../mercadopago.json" with { type: "json" };
+import authRoutes from "../routes/auth.js";
+import ebookRoutes from "../routes/ebooks.js";
+import webhookRoutes from "../routes/webhooks.js";
+import requireAuth from "../middleware/requireAuth.js";
+import {
+  getEbookByTitle
+} from "../services/ebooks.service.js";
+
+import {
+  getPaidOrder,
+  getPendingOrder,
+  createPendingOrder
+} from "../services/orders.service.js";
+
+import {
+  createPaymentPreference
+} from "../services/payments.service.js";
+
+import supabase from "../lib/supabase.js";
 
 const app = express();
 app.set("trust proxy", 1);
@@ -22,6 +40,7 @@ app.set("views", path.join(__dirname, "../views"));
 // Middlewares
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: true, 
@@ -36,6 +55,22 @@ app.use(session({
     maxAge: 1000 * 60 * 60
   }
 }));
+
+app.use((req, res, next) => {
+
+  res.locals.user =
+    req.session.user || null;
+
+  res.locals.isAdmin =
+    req.session.isAdmin || false;
+
+  next();
+
+});
+
+app.use("/", authRoutes);
+app.use("/", ebookRoutes);
+app.use("/webhooks", webhookRoutes);
 
 // Routes
 app.get("/", (req, res) => {
@@ -61,19 +96,104 @@ app.get("/portafolio", async (req, res) => {
   }
 });
 
-app.get("/comprar-ebook/:title", (req, res) => {
+app.get(
+  "/comprar-ebook/:title",
+  requireAuth,
+  async (req, res) => {
 
-  const title = decodeURIComponent(req.params.title);
+    try {
 
-  const libro = mercadopago[title];
+      const title =
+        decodeURIComponent(
+          req.params.title
+        );
 
-  if (!libro) {
-    return res.status(404).send("No se encontró enlace de pago para este libro.");
+      const user =
+        req.session.user;
+
+      const ebook =
+        await getEbookByTitle(
+          title
+        );
+
+      if (!ebook) {
+
+        return res
+          .status(404)
+          .send(
+            "Libro no encontrado."
+          );
+
+      }
+
+      const paidOrder =
+        await getPaidOrder(
+          user.id,
+          ebook.id
+        );
+
+      if (paidOrder) {
+
+        return res.redirect(
+          `/mis-libros/${encodeURIComponent(
+            title
+          )}`
+        );
+
+      }
+
+      let order =
+        await getPendingOrder(
+          user.id,
+          ebook.id
+        );
+
+      if (!order) {
+
+        order =
+          await createPendingOrder(
+            user.id,
+            ebook.id
+          );
+
+      }
+
+      const preference =
+        await createPaymentPreference(
+          order,
+          ebook,
+          user
+        );
+
+      await supabase
+        .from("orders")
+        .update({
+          mercadopago_preference_id:
+            preference.id
+        })
+        .eq(
+          "id",
+          order.id
+        );
+
+      return res.redirect(
+        preference.init_point
+      );
+
+    } catch (err) {
+
+      console.error(err);
+
+      return res
+        .status(500)
+        .send(
+          "Error creando pago."
+        );
+
+    }
+
   }
-
-  res.redirect(libro.enlace_pago);
-
-});
+);
 
 app.get("/anuncios", (req, res) => {
   res.render("news");

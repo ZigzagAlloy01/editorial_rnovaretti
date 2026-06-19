@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<h1>Mis Libros</h1>
+
+<% if (!books || books.length === 0) { %>
+
+    <p>
+        Aún no has comprado ningún ebook.
+    </p>
+
+<% } else { %>
+
+    <ul>
+
+    <% books.forEach(book => { %>
+
+        <% if (book.ebooks) { %>
+
+            <li>
+
+                <a href="/mis-libros/<%= encodeURIComponent(book.ebooks.title) %>">
+                    <%= book.ebooks.title %>
+                </a>
+
+            </li>
+
+        <% } %>
+
+    <% }) %>
+
+    </ul>
+
+<% } %>
+
+<%- include('../partials/footer') %>
