@@ -20,20 +20,35 @@ router.post(
 
         try {
 
+            console.log("=== WEBHOOK RECIBIDO ===");
+
             console.log(
-                "Webhook MercadoPago recibido"
+                JSON.stringify(req.body)
             );
 
             const paymentId =
                 req.body?.data?.id;
 
+            console.log(
+                "paymentId:",
+                paymentId
+            );
+
             if (!paymentId) {
+
+                console.log(
+                    "No paymentId"
+                );
 
                 return res
                     .status(200)
                     .send("ok");
 
             }
+
+            console.log(
+                "Consultando MP..."
+            );
 
             const paymentApi =
                 new Payment(client);
@@ -44,29 +59,22 @@ router.post(
                 });
 
             console.log(
-                "Pago consultado:",
-                payment.id
+                "Pago obtenido:"
             );
 
-            if (
-                payment.status !==
-                "approved"
-            ) {
-
-                return res
-                    .status(200)
-                    .send("ok");
-
-            }
+            console.log(
+                JSON.stringify(payment)
+            );
 
             const orderId =
                 payment.external_reference;
 
-            if (!orderId) {
+            console.log(
+                "orderId:",
+                orderId
+            );
 
-                console.error(
-                    "Sin external_reference"
-                );
+            if (!orderId) {
 
                 return res
                     .status(200)
@@ -75,29 +83,25 @@ router.post(
             }
 
             const {
-                data: order
+                data: order,
+                error: orderError
             } = await supabase
                 .from("orders")
                 .select("*")
                 .eq("id", orderId)
                 .single();
 
+            console.log(
+                "orderError:",
+                orderError
+            );
+
+            console.log(
+                "order:",
+                order
+            );
+
             if (!order) {
-
-                console.error(
-                    "Orden inexistente"
-                );
-
-                return res
-                    .status(200)
-                    .send("ok");
-
-            }
-
-            if (
-                order.status ===
-                "paid"
-            ) {
 
                 return res
                     .status(200)
@@ -110,8 +114,7 @@ router.post(
             );
 
             console.log(
-                "Orden marcada como pagada:",
-                order.id
+                "ORDEN MARCADA COMO PAGADA"
             );
 
             return res
@@ -120,7 +123,19 @@ router.post(
 
         } catch (err) {
 
+            console.error(
+                "ERROR WEBHOOK:"
+            );
+
             console.error(err);
+
+            console.error(
+                err?.message
+            );
+
+            console.error(
+                err?.stack
+            );
 
             return res
                 .status(500)
