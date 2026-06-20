@@ -1,3 +1,19 @@
+import express from "express";
+
+import supabase from "../lib/supabase.js";
+
+import {
+    markOrderPaid
+} from "../services/orders.service.js";
+
+import client from "../lib/mercadopago.js";
+
+import {
+    Payment
+} from "mercadopago";
+
+const router = express.Router();
+
 router.post(
     "/mercadopago",
     async (req, res) => {
@@ -34,3 +50,5 @@ router.post(
 
     }
 );
+
+export default router;
